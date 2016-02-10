@@ -16,7 +16,7 @@ public class Ticks extends Simulation{
   }
 
   public static void main(String[] args) {
-    assert(args.length == 1);
+    assert(args.length == 1):"We only accept 1 argument";
     double n = Double.parseDouble(args[0]);
     //int n = Integer.parseInt(args[0]);
     System.out.println("This is the tick simulation: ");

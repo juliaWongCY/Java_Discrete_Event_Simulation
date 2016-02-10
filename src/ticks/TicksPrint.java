@@ -15,8 +15,6 @@ class TicksPrint implements Event {
       System.out.println("Tick at: " + result );
 
     }
-
-
   }
 
 }

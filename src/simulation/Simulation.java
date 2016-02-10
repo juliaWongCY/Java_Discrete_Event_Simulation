@@ -21,7 +21,7 @@ public abstract class Simulation {
     return currentTime;
   }
 
-  protected void schedule(Event e, double offset){
+  public void schedule(Event e, double offset){
     double scheduledTime = currentTime + offset;
     ScheduledEvent event = new ScheduledEvent(e, scheduledTime);
     diary.add(event);
