@@ -8,6 +8,7 @@ class Print implements Event {
   private final int n;
 
   public Print(int n) {
+
     this.n = n;
   }
 
