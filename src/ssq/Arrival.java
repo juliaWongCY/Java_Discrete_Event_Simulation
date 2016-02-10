@@ -19,25 +19,36 @@ public class Arrival implements Event {
 
   private Event arrivalE;
 
-  public Arrival(Event arrivalE){
-    this.arrivalE = arrivalE;
+  public Arrival(){
+    //this.arrivalE = arrivalE;
 
   }
 
   @Override
   public void invoke(Simulation simulation) {
-    ScheduledEvent scheduledEvent
-      = new ScheduledEvent(arrivalE, simulation.getCurrentTime());
-    arrivalNum ++;
+    double currentTime = simulation.getCurrentTime();
+    ScheduledEvent scheduledEvent = new ScheduledEvent(arrivalE, currentTime);
+    /*arrivalNum ++;
     queueNum ++;
     queue.add(scheduledEvent);
     System.out.println("An arrival has happened.");
+    */
 
     if(queue.isEmpty()){
-      simulation.schedule(arrivalE, serviceTime);
+        arrivalNum ++;
+        queueNum ++;
+        queue.add(scheduledEvent);
+        System.out.println("An arrival has happened.");
+
+        simulation.schedule(arrivalE, serviceTime);
       System.out.println("Arrival at " + interArrivalTime + ", new population = " + queueNum);
     } else {
-      simulation.schedule(arrivalE, interArrivalTime);
+        arrivalNum ++;
+        queueNum ++;
+        queue.add(scheduledEvent);
+        System.out.println("An arrival has happened.");
+
+        simulation.schedule(arrivalE, interArrivalTime);
       System.out.println("Arrival at " + interArrivalTime + ", new population = " + queueNum);
 
     }

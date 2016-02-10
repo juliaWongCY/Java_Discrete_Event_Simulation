@@ -19,27 +19,29 @@ public class Departure implements Event{
 
   private Event departE;
 
-  public Departure(Event departE){
-    this.departE = departE;
+  public Departure(){
+    //this.departE = departE;
   }
 
   @Override
   public void invoke(Simulation simulation) {
-    ScheduledEvent scheduledEvent
+    /*ScheduledEvent scheduledEvent
       = new ScheduledEvent(departE, simulation.getCurrentTime());
+    */
+    /*departureNum ++;
+    queueNum --;
+    queue.poll();
+    System.out.println("A departure has happened.");
+    */
     departureNum ++;
     queueNum --;
     queue.poll();
     System.out.println("A departure has happened.");
 
-    if(queue.isEmpty()){
-      simulation.schedule(departE, serviceTime);
-      System.out.println("Depart at " + interArrivalTime + ", new population = " + queueNum);
-    } else {
-      simulation.schedule(departE, interArrivalTime);
-      System.out.println("Depart at " + interArrivalTime + ", new population = " + queueNum);
+    simulation.schedule(departE, interArrivalTime);
+    System.out.println("Depart at " + interArrivalTime + ", new population = " + queueNum);
 
-    }
+
 
   }
 
