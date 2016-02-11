@@ -29,12 +29,12 @@ public class Departure implements Event{
       = new ScheduledEvent(departE, simulation.getCurrentTime());
 
 
-      if(queue.isEmpty()){
-          departureNum ++;
+      if(!queue.isEmpty()){
+          /*departureNum ++;
           queueNum --;
           queue.add(scheduledEvent);
           System.out.println("An arrival has happened.");
-
+          */
           simulation.schedule(departE, serviceTime);
           System.out.println("Arrival at " + interArrivalTime + ", new population = " + queueNum);
       } else {

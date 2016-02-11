@@ -12,10 +12,6 @@ public class SingleServerQueue extends Simulation {
     //long seed = new Random().nextLong();
     //Random randomNum = new Random();
 
-  /*double serviceTime = 0.25;
-  int queueNum = 0;
-  Queue<ScheduledEvent> queue = new PriorityQueue<>();
-  */
   public SingleServerQueue(double currentTime){
     super(currentTime);
   }
@@ -26,17 +22,21 @@ public class SingleServerQueue extends Simulation {
     }
 
   public static void main(String[] args) {
+    SingleServerQueue ssq = new SingleServerQueue(0);
     assert (args.length == 2):"We only accept 2 arguments";
     long seed = Long.parseLong(args[0]);
     double time = Double.parseDouble(args[1]);
-    double interArrivalTime = ThreadLocalRandom.current().nextDouble(0, 1);
+    double currentTime = ssq.getCurrentTime();
 
 
-    while(interArrivalTime < time){
+    while(currentTime < time + currentTime){
+      double interArrivalTime = ThreadLocalRandom.current().nextDouble(0, 1);
+      Arrival arrival = new Arrival();
+      Departure departure = new Departure();
       Random randomNum = new Random(seed);
 
-      SingleServerQueue ssq = new SingleServerQueue(0);
-        if()
+      //arrival.invoke(ssq);
+      //departure.invoke(ssq);
       ssq.schedule(new Arrival(), time);
       ssq.schedule(new Departure(), time);
       ssq.simulate();
