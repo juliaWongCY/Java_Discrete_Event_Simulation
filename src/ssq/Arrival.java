@@ -16,43 +16,32 @@ public class Arrival implements Event {
 
     @Override
     public void invoke(Simulation simulation) {
-        double currentTime = simulation.getCurrentTime();
         //ScheduledEvent scheduledEvent = new ScheduledEvent(arrivalE, currentTime);
         SingleServerQueue ssq = (SingleServerQueue) simulation;
-        Arrival arrival = new Arrival();
+        //Arrival arrival = new Arrival();
 
         if (ssq.isQueueEmpty()) {
-            ssq.increaseQueueNum();
-            System.out.println("An arrival has happened.");
-            ssq.schedule(arrival, ssq.getInterArrivalTime());
+            ssq.scheduleNewArrival();
             ssq.scheduleNewDeparture();
-            ssq.scheduleNewArrival();
+
+            //Departure departure = new Departure();
+            //ssq.schedule(departure, serviceTime);
+            //ssq.schedule(arrival, ssq.getInterArrivalTime());
         } else {
-            ssq.schedule(arrival, ssq.getInterArrivalTime());
-            Departure departure = new Departure();
+          ssq.scheduleNewArrival();
 
-            ssq.schedule(departure, serviceTime);
+            //ssq.increaseQueueNum();
+            //ssq.schedule(arrival, ssq.getInterArrivalTime());
 
-            System.out.println("An arrival has happened.");
-            ssq.scheduleNewArrival();
         }
-
-        System.out.println("Arrival at " + currentTime + ", new population = " + ssq.getNumOfQueue());
-
-
-
-
-            //simulation.schedule(arrivalE, interArrivalTime);
-   /* } else {
-        queue.add(scheduledEvent);
+        //ssq.increaseQueueNum();
+        double currentTime = simulation.getCurrentTime();
         System.out.println("An arrival has happened.");
-        simulation.schedule(arrivalE, interArrivalTime);
-        //System.out.println("Arrival at " + interArrivalTime + ", new population = " + queueNum);
+        System.out.println("Arrival at " + currentTime + ", new population = " + ssq.increaseQueueNum());
 
-    }*/
 
-        }
     }
+}
 
 
 
@@ -65,3 +54,11 @@ public class Arrival implements Event {
     */
 
 //((SingleServerQueue simulation).add(scheduledEvent);
+//simulation.schedule(arrivalE, interArrivalTime);
+   /* } else {
+        queue.add(scheduledEvent);
+        System.out.println("An arrival has happened.");
+        simulation.schedule(arrivalE, interArrivalTime);
+        //System.out.println("Arrival at " + interArrivalTime + ", new population = " + queueNum);
+
+    }*/
