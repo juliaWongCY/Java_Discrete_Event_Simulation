@@ -1,4 +1,4 @@
-package ssq;
+/*package ssq;
 
 import simulation.Event;
 import simulation.Simulation;
@@ -25,3 +25,4 @@ public class Ssq1 implements Event {
 
 
 }
+*/

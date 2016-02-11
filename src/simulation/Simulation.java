@@ -29,15 +29,13 @@ public abstract class Simulation {
   }
 
   public void simulate(){
-    //todo : check again
-    while(!stop() && ! diary.isEmpty()){
+    while(!stop()&& ! diary.isEmpty()){
       ScheduledEvent nextEvent = diary.poll();
       currentTime = nextEvent.getTime();
+
       Event currentEvent = nextEvent.getEvent();
       currentEvent.invoke(this);
     }
   }
-
-
 
 }
