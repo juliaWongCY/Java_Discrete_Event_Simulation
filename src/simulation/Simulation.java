@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public abstract class Simulation {
 
-  private double currentTime;
+  protected double currentTime;
   Queue<ScheduledEvent> diary = new PriorityQueue<>();
 
 
@@ -28,7 +28,7 @@ public abstract class Simulation {
 
   }
 
-  protected void simulate(){
+  public void simulate(){
     //todo : check again
     while(!stop() && ! diary.isEmpty()){
       ScheduledEvent nextEvent = diary.poll();

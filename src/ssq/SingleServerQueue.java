@@ -31,15 +31,17 @@ public class SingleServerQueue extends Simulation {
     double time = Double.parseDouble(args[1]);
     double interArrivalTime = ThreadLocalRandom.current().nextDouble(0, 1);
 
+
     while(interArrivalTime < time){
       Random randomNum = new Random(seed);
 
       SingleServerQueue ssq = new SingleServerQueue(0);
+        if()
       ssq.schedule(new Arrival(), time);
       ssq.schedule(new Departure(), time);
       ssq.simulate();
 
-      interArrivalTime = randomNum.nextDouble();
+      interArrivalTime = randomNum.nextDouble() + ssq.getCurrentTime();
 
 
     }
