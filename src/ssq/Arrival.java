@@ -36,7 +36,7 @@ public class Arrival implements Event {
         }
         //ssq.increaseQueueNum();
         double currentTime = simulation.getCurrentTime();
-        System.out.println("An arrival has happened.");
+        //System.out.println("An arrival has happened.");
         System.out.println("Arrival at " + currentTime + ", new population = " + ssq.increaseQueueNum());
 
 

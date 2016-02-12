@@ -21,15 +21,15 @@ public class Departure implements Event{
   @Override
   public void invoke(Simulation simulation) {
       SingleServerQueue ssq = (SingleServerQueue) simulation;
-      //ssq.decreaseQueueNum();
+      int newPopulation = ssq.decreaseQueueNum();
 
       if(!ssq.isQueueEmpty()){
-        System.out.println("An departure has happened.");
+        //System.out.println("An departure has happened.");
         ssq.scheduleNewDeparture();
       }
       double currentTime = simulation.getCurrentTime();
-      System.out.println("A departure has happened.");
-      System.out.println("Departure at " + currentTime + ", new population = " + ssq.decreaseQueueNum());
+      //System.out.println("A departure has happened.");
+      System.out.println("Departure at " + currentTime + ", new population = " + newPopulation);
 
 
 

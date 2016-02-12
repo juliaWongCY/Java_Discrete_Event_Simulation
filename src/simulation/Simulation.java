@@ -34,9 +34,7 @@ public abstract class Simulation {
       ScheduledEvent nextEvent = diary.poll();
       currentTime = nextEvent.getTime();
       nextEvent.getEvent().invoke(this);
-      //Event currentEvent = nextEvent.getEvent();
-      //currentEvent.invoke(this);
-      diary.poll();
+
     }
   }
 
