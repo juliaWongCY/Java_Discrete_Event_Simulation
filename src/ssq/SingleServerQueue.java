@@ -44,9 +44,6 @@ public class SingleServerQueue extends Simulation {
     return queueNum;
   }
 
-  public int getNumOfQueue(){
-    return queueNum;
-  }
 
   public double getInterArrivalTime(){
     return randomNum.nextDouble();
@@ -61,7 +58,7 @@ public class SingleServerQueue extends Simulation {
     long seed = Long.parseLong(args[0]);
     double execTime = Double.parseDouble(args[1]);
 
-      SingleServerQueue ssq = new SingleServerQueue(seed, execTime, 0);
+    SingleServerQueue ssq = new SingleServerQueue(seed, execTime, 0);
     double interArrivalTime = ssq.getInterArrivalTime();
 
     ssq.schedule(new Arrival(), interArrivalTime);
@@ -76,12 +73,9 @@ public class SingleServerQueue extends Simulation {
 
 
 
-//double interArrivalTime = ThreadLocalRandom.current().nextDouble(0, 1);
-//Departure departure = new Departure();
 
 
-//System.out.println("Arrival at " + currentTime + ", new population = " );
-//ssq.schedule(new Departure(), execTime);
-
-//interArrivalTime = randomNum.nextDouble() + ssq.getCurrentTime();
-
+/* public int getNumOfQueue(){
+    return queueNum;
+  }
+*/
