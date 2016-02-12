@@ -24,7 +24,6 @@ public class Departure implements Event{
       int newPopulation = ssq.decreaseQueueNum();
 
       if(!ssq.isQueueEmpty()){
-        //System.out.println("An departure has happened.");
         ssq.scheduleNewDeparture();
       }
       double currentTime = simulation.getCurrentTime();
@@ -32,17 +31,6 @@ public class Departure implements Event{
       System.out.println("Departure at " + currentTime + ", new population = " + newPopulation);
 
 
-
-
-
-      /*else {
-        System.out.println("An departure has happened.");
-        simulation.schedule(departE, interArrivalTime);
-        */
-
-
-         // simulation.schedule(departE, interArrivalTime + serviceTime);
-         // System.out.println("Arrival at " + interArrivalTime + ", new population = " + queueNum);
 
       }
 
