@@ -20,11 +20,15 @@ public class Arrival implements Event<SingleServerQueue> {
         } else {
           simulation.scheduleNewArrival();
 
-
         }
+        int newPopulation = simulation.increaseQueueNum();
         double currentTime = simulation.getCurrentTime();
         //System.out.println("An arrival has happened.");
-        System.out.println("Arrival at " + currentTime + ", new population = " + simulation.increaseQueueNum());
+        System.out.println("Arrival at " + currentTime + ", new population = " + newPopulation);
+        simulation.meanLength();
+
+
+
 
 
     }

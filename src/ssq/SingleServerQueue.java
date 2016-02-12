@@ -9,11 +9,15 @@ import java.util.Random;
 
 public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
- Queue<ScheduledEvent> queue = new PriorityQueue<>();
- private Random randomNum;
- private double execTime;
- private int queueNum = 0;
- private final double serviceTime = 0.25;
+  Queue<ScheduledEvent> queue = new PriorityQueue<>();
+  private Random randomNum;
+  private double execTime;
+  private int queueNum = 0;
+  private final double serviceTime = 0.25;
+  private double prevTime;
+  private double meanLength;
+  private int prevQNum;
+
 
   public SingleServerQueue(long seed, double execTime, long currentTime){
     super(currentTime);
@@ -41,12 +45,28 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
   public int increaseQueueNum() {
     queueNum++;
-    return  queueNum;
+    return queueNum;
   }
 
   public int decreaseQueueNum() {
     queueNum--;
     return queueNum;
+  }
+
+  public int getNumOfQueue(){
+    return queueNum;
+  }
+
+  public void meanLength(){
+    meanLength += (getCurrentTime() - prevTime) * prevQNum;
+      System.out.println("Mean length thus far: " + meanLength);
+    prevTime = getCurrentTime();
+    prevQNum = queueNum;
+  }
+
+  public double getMeanQueueLength(){
+    meanLength += (execTime - prevTime) * prevQNum;
+    return (meanLength/ execTime);
   }
 
 
@@ -68,7 +88,8 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
     ssq.schedule(new Arrival(), interArrivalTime);
     ssq.simulate();
-    System.out.println("SIMULATION COMPLETE");
+    System.out.print("SIMULATION COMPLETE - ");
+    System.out.print(ssq.getMeanQueueLength());
 
 
 
@@ -80,7 +101,3 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
 
 
-/* public int getNumOfQueue(){
-    return queueNum;
-  }
-*/
