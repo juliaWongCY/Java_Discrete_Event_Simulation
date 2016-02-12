@@ -79,10 +79,8 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
     ssq.schedule(new Arrival(), interArrivalTime);
     ssq.simulate();
-    System.out.print("SIMULATION COMPLETE - ");
+    System.out.print("SIMULATION COMPLETE - the mean queue length was ");
     System.out.print(ssq.getMeanQueueLength());
-
-
   }
 
 }
