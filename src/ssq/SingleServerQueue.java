@@ -1,15 +1,10 @@
 package ssq;
 
-import simulation.ScheduledEvent;
 import simulation.Simulation;
-
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Random;
 
 public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
-  Queue<ScheduledEvent> queue = new PriorityQueue<>();
   private Random randomNum;
   private double execTime;
   private int queueNum = 0;
@@ -19,7 +14,7 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
   private int prevQNum;
 
 
-  public SingleServerQueue(long seed, double execTime, long currentTime){
+  public SingleServerQueue(long seed, double execTime, long currentTime) {
     super(currentTime);
     randomNum = new Random(seed);
     this.execTime = execTime;
@@ -31,15 +26,15 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
   }
 
   @Override
-  protected SingleServerQueue getState(){
+  protected SingleServerQueue getState() {
     return this;
   }
 
-  public void scheduleNewArrival(){
+  public void scheduleNewArrival() {
     schedule(new Arrival(), getInterArrivalTime());
   }
 
-  public void scheduleNewDeparture(){
+  public void scheduleNewDeparture() {
     schedule(new Departure(), serviceTime);
   }
 
@@ -53,33 +48,29 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
     return queueNum;
   }
 
-  public int getNumOfQueue(){
-    return queueNum;
-  }
 
-  public void meanLength(){
+  public void meanLength() {
     meanLength += (getCurrentTime() - prevTime) * prevQNum;
-      System.out.println("Mean length thus far: " + meanLength);
     prevTime = getCurrentTime();
     prevQNum = queueNum;
   }
 
-  public double getMeanQueueLength(){
+  public double getMeanQueueLength() {
     meanLength += (execTime - prevTime) * prevQNum;
-    return (meanLength/ execTime);
+    return (meanLength / execTime);
   }
 
 
-  public double getInterArrivalTime(){
+  public double getInterArrivalTime() {
     return randomNum.nextDouble();
   }
 
-  public boolean isQueueEmpty(){
+  public boolean isQueueEmpty() {
     return (queueNum == 0);
   }
 
   public static void main(String[] args) {
-    assert (args.length == 2): "We only accept 2 arguments";
+    assert (args.length == 2) : "We only accept 2 arguments";
     long seed = Long.parseLong(args[0]);
     double execTime = Double.parseDouble(args[1]);
 
@@ -90,7 +81,6 @@ public class SingleServerQueue extends Simulation<SingleServerQueue> {
     ssq.simulate();
     System.out.print("SIMULATION COMPLETE - ");
     System.out.print(ssq.getMeanQueueLength());
-
 
 
   }

@@ -3,12 +3,11 @@ package print3;
 import simulation.Simulation;
 
 
-public class Print3 extends Simulation<Print3>{
+public class Print3 extends Simulation<Print3> {
 
-  public Print3(double currentTime){
+  public Print3(double currentTime) {
     super(currentTime);
   }
-
 
 
   @Override
@@ -17,7 +16,7 @@ public class Print3 extends Simulation<Print3>{
   }
 
   @Override
-  protected Print3 getState(){
+  protected Print3 getState() {
     return this;
   }
 
