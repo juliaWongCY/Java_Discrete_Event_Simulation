@@ -2,19 +2,17 @@ package ssq;
 
 
 import simulation.Event;
-import simulation.Simulation;
 
 
 
-public class Departure implements Event{
+public class Departure implements Event<SingleServerQueue>{
 
   @Override
-  public void invoke(Simulation simulation) {
-      SingleServerQueue ssq = (SingleServerQueue) simulation;
-      int newPopulation = ssq.decreaseQueueNum();
+  public void invoke(SingleServerQueue simulation) {
+      int newPopulation = simulation.decreaseQueueNum();
 
-      if(!ssq.isQueueEmpty()){
-        ssq.scheduleNewDeparture();
+      if(!simulation.isQueueEmpty()){
+        simulation.scheduleNewDeparture();
       }
       double currentTime = simulation.getCurrentTime();
       //System.out.println("A departure has happened.");

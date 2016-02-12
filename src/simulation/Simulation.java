@@ -3,7 +3,7 @@ package simulation;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public abstract class Simulation {
+public abstract class Simulation<S> {
 
   protected double currentTime;
   Queue<ScheduledEvent> diary = new PriorityQueue<>();
@@ -16,6 +16,8 @@ public abstract class Simulation {
   }
 
   protected abstract boolean stop();
+
+  protected abstract S getState();
 
   public double getCurrentTime(){
     return currentTime;

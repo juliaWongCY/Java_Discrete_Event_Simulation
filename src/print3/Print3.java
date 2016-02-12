@@ -3,7 +3,7 @@ package print3;
 import simulation.Simulation;
 
 
-public class Print3 extends Simulation{
+public class Print3 extends Simulation<Print3>{
 
   public Print3(double currentTime){
     super(currentTime);
@@ -14,6 +14,11 @@ public class Print3 extends Simulation{
   @Override
   protected boolean stop() {
     return false;
+  }
+
+  @Override
+  protected Print3 getState(){
+    return this;
   }
 
   public static void main(String args[]) {

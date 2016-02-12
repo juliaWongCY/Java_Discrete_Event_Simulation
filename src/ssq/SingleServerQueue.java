@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 
-public class SingleServerQueue extends Simulation {
+public class SingleServerQueue extends Simulation<SingleServerQueue> {
 
  Queue<ScheduledEvent> queue = new PriorityQueue<>();
  private Random randomNum;
@@ -24,6 +24,11 @@ public class SingleServerQueue extends Simulation {
   @Override
   protected boolean stop() {
     return (currentTime > execTime);
+  }
+
+  @Override
+  protected SingleServerQueue getState(){
+    return this;
   }
 
   public void scheduleNewArrival(){

@@ -1,6 +1,6 @@
 package simulation;
 
-public interface Event {
+public interface Event<S> {
 
-  void invoke(Simulation simulation);
+  void invoke(S simulation);
 }

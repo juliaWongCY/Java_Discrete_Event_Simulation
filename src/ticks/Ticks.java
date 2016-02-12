@@ -2,7 +2,7 @@ package ticks;
 
 import simulation.Simulation;
 
-public class Ticks extends Simulation{
+public class Ticks extends Simulation<Ticks>{
 
   public Ticks(double currentTime){
 
@@ -12,6 +12,11 @@ public class Ticks extends Simulation{
   @Override
   protected boolean stop() {
     return false;
+  }
+
+  @Override
+  protected Ticks getState(){
+    return this;
   }
 
   public static void main(String[] args) {
