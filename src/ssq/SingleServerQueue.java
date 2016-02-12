@@ -53,7 +53,7 @@ public class SingleServerQueue extends Simulation {
   }
 
   public boolean isQueueEmpty(){
-    return (queue.isEmpty());
+    return (queueNum == 0);
   }
 
   public static void main(String[] args) {

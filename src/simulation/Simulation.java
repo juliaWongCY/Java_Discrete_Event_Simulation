@@ -33,8 +33,11 @@ public abstract class Simulation {
     while((!stop()) && !diary.isEmpty()){
       ScheduledEvent nextEvent = diary.poll();
       currentTime = nextEvent.getTime();
-      nextEvent.getEvent().invoke(this);
-
+      if(stop()){
+        break;
+      } else {
+        nextEvent.getEvent().invoke(this);
+      }
     }
   }
 
