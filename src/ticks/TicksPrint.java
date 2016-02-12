@@ -1,7 +1,6 @@
 package ticks;
 
 import simulation.Event;
-import simulation.Simulation;
 
 class TicksPrint implements Event<Ticks> {
 
