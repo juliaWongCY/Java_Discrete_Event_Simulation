@@ -12,7 +12,8 @@ public class Departure implements Event<SingleServerQueue> {
       simulation.scheduleNewDeparture();
     }
     double currentTime = simulation.getCurrentTime();
-    System.out.println("Departure at " + currentTime + ", new population = " + newPopulation);
+    System.out.println("Departure at " + currentTime +
+                       ", new population = " + newPopulation);
     simulation.meanLength();
   }
 }
